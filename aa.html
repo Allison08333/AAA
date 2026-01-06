@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Quieres regresar conmigo?</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+img {
+    width: 90%;
+    max-width: 320px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+#texto {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+.botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+
+button {
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    white-space: normal;
+}
+
+
+#si {
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    padding: 15px 25px;
+    transition: all 0.3s ease;
+}
+
+
+#no {
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    padding: 12px 18px;
+    width: 220px;          
+    flex-shrink: 0;        
+}
+</style>
+</head>
+
+<body>
+
+<img id="gatito" src="gatito1.jpg">
+
+<div id="texto">¿Quieres regresar conmigo?</div>
+
+<div class="botones">
+    <button id="si" onclick="aceptar()">Sí</button>
+    <button id="no" onclick="rechazar()">No</button>
+</div>
+
+<script>
+let tamañoSi = 20;
+let contador = 0;
+
+const imagenes = [
+    "gatito1.jpg",
+    "gatito2.jpg",
+    "gatito3.jpg",
+    "gatito5.jpg",
+    "gatito6.jpg",
+    "gatito7.jpg",
+    "gatito8.jpg"
+];
+
+const frasesNo = [
+    "¿No quieres regresar conmigo?",
+    "¿Seguro que no quieres volver?",
+    "¿No extrañas lo nuestro?",
+    "Dame otra oportunidad, por favor",
+    "Solo piénsalo, ¿sí?",
+    "Me haría muy feliz volver a estar juntos",
+    "Por favor… ¿por favor?",
+    "Mira el SÍ 😭",
+    "Ya no digas no 💔"
+];
+
+function rechazar() {
+    
+    if (contador < frasesNo.length) {
+        document.getElementById("no").innerText = frasesNo[contador];
+    }
+
+    
+    tamañoSi += 14;
+    const btnSi = document.getElementById("si");
+    btnSi.style.fontSize = tamañoSi + "px";
+    btnSi.style.padding = tamañoSi + "px";
+
+    
+    document.getElementById("gatito").src =
+        imagenes[contador % imagenes.length];
+
+    contador++;
+}
+
+function aceptar() {
+    document.body.innerHTML = `
+        <h1>Sabía que dirías que sí 💖🐱</h1>
+        <img src="gatito4.jpg" style="width:90%;max-width:320px;border-radius:15px;">
+        <p style="font-size:22px;">
+            Gracias por volver conmigo 🥰
+        </p>
+    `;
+}
+</script>
+
+</body>
+</html>
